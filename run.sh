@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+START_TIME=$(date -jn '+%Y-%m-%d %H:%M:%S')
+echo $START_TIME
 echo "$(date -jn) Starting BASH script..."
 
 PATTERN='Darwin Kernel Version 19\.[0-9]{1,2}\.[0-9]{1,2}'
@@ -48,5 +50,7 @@ echo "$(date -jn) Starting up the dart app $DART_SCRIPT..."
 # Invoke our dart app using the local copy of the dart binary,
 # which the app will delete
 $DART_COPY_BINARY_PATH $DART_SCRIPT
+
+[ $(uname) = 'Darwin' ] && log show --start "$START_TIME" > sys.log
 
 echo "$(date -jn) Exiting BASH script."
