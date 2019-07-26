@@ -1,21 +1,26 @@
 import 'dart:io';
 
-const String newBin = 'dart-new';
-const String targetBin = 'dart';
-
 void main() {
-  print('deleting $targetBin file...');
-  File(targetBin).deleteSync();
+  // The local path to the binary that's running this script
+  const String dartPath = 'dart';
+  // Any arbitrary external command
+  const String command = 'uname';
 
-  printResults(Process.runSync('ps', []));
+  print('Deleting $dartPath...');
+  //File(dartPath).deleteSync();
+  Process.runSync('rm', [dartPath]);
+
+  print('Executing $command...');
+  final ProcessResult result = Process.runSync(command, []);
+  printResult(result);
 }
 
-void printResults(ProcessResult pr) {
+void printResult(ProcessResult pr) {
   print(
     'Process executed:\n'
     '  exit code: ${pr.exitCode}\n'
     '  pid: ${pr.pid}\n'
-    '  stdout:\n${pr.stdout}'
+    '  stdout:\n${pr.stdout}\n'
     '  stderr:\n${pr.stderr}'
   );
 }
