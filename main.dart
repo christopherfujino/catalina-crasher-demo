@@ -7,8 +7,7 @@ void main() {
   const String command = 'uname';
 
   print('Deleting $dartPath...');
-  //File(dartPath).deleteSync();
-  Process.runSync('rm', [dartPath]);
+  File(dartPath).deleteSync();
 
   print('Executing $command...');
   final ProcessResult result = Process.runSync(command, []);
