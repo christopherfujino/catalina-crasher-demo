@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+exec > >(tee -ia script.log)
+
 START_TIME=$(date -jn '+%Y-%m-%d %H:%M:%S')
 echo $START_TIME
 echo "$(date -jn) Starting BASH script..."
