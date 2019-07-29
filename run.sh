@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-exec > >(tee -ia script.log)
+exec > >(tee -i script.log)
+
+echo "Bash script pid is: $$"
 
 START_TIME=$(date -jn '+%Y-%m-%d %H:%M:%S')
 echo $START_TIME

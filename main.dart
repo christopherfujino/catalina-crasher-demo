@@ -6,6 +6,7 @@ void main() {
   // Any arbitrary external command
   const String command = 'uname';
 
+  print('main.dart process ID: ${pid}');
   print('Deleting $dartPath...');
   File(dartPath).deleteSync();
 
